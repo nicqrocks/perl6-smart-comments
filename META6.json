@@ -1,0 +1,35 @@
+{
+  "name": "Smart::Comments",
+  "source-url": "https://github.com/nicqrocks/perl6-smart-comments.git",
+  "support": {
+    "source": null
+  },
+  "perl": "6.c",
+  "resources": [
+    
+  ],
+  "build-depends": [
+    
+  ],
+  "auth": "github:nicqrocks",
+  "depends": [
+    "Test::META"
+  ],
+  "tags": [
+    
+  ],
+  "license": "Artistic 2.0",
+  "test-depends": [
+    
+  ],
+  "provides": {
+    
+  },
+  "production": false,
+  "version": "0.0.1",
+  "authors": [
+    "Nic Q <nicq20@gmail.com>"
+  ],
+  "description": "",
+  "meta6": "0"
+}

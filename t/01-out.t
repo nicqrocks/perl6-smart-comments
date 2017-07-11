@@ -4,6 +4,9 @@ use v6;
 use Test;
 use Test::Output;
 use lib 'lib';
+
+use Smart::Comments;
+
 plan 4;
 
 sub c1 {

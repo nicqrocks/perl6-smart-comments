@@ -9,17 +9,17 @@ role Smart::Comments::Actions is export {
         nqp::atkey(nqp::findmethod(h, 'hash')(h), k)
     }
 
-    method statement_control:sym<smc>($/) {
-        note "Got: $/";
-        my $msg := "Hello there";
-        #my $msg := lk($/, 'smc-msg');
-        note "The message is: $msg";
+    method comment:sym<smc>(Mu $/) {
+        #Get the message.
+        my $msg := lk($/, 'smc-msg');
+
+        #Make the QAST::Op.
         my $b := QAST::Op.new:
             :op<call>,
-            :name<note>,
-            QAST::SVal.new(:value($msg));
+            :name<say>,
+            QAST::SVal.new(:value($msg.Str));
+
+        #Add the block to the `made` var.
         $/.make($b);
     }
-
-    method smc-msg:sym<basic>($/) { make $/.Str; }
 }

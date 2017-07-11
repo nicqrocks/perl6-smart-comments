@@ -3,7 +3,7 @@
 #Define the grammar to expand.
 role Smart::Comments::Grammar is export {
     #The basic structure of the grammar.
-    rule statement_control:sym<smc> {:!s ["#" ** 3..5] " "? <smc-msg> }
+    rule comment:sym<smc> {:!s ["#" ** 3..5] " "? <smc-msg> }
 
     #Differentiate the message types.
     proto token smc-msg {*}

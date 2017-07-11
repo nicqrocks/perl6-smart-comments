@@ -24,7 +24,9 @@
 
   ],
   "provides": {
-
+      "Smart::Comments": "lib/Smart/Comments.pm6",
+      "Smart::Comments::Grammar": "lib/Smart/Comments/Grammar.pm6",
+      "Smart::Comments::Actions": "lib/Smart/Comments/Actions.pm6"
   },
   "production": false,
   "version": "0.0.1",

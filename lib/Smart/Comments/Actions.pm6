@@ -10,13 +10,16 @@ role Smart::Comments::Actions is export {
     }
 
     method statement_control:sym<smc>($/) {
-        my $msg := lk($/, 'msg');
+        note "Got: $/";
+        my $msg := "Hello there";
+        #my $msg := lk($/, 'smc-msg');
+        note "The message is: $msg";
         my $b := QAST::Op.new:
             :op<call>,
-            :name<&note>,
+            :name<note>,
             QAST::SVal.new(:value($msg));
-        $/.'!make'($b);
+        $/.make($b);
     }
 
-    method msg:sym<basic>($/) { make $/.Str; }
+    method smc-msg:sym<basic>($/) { make $/.Str; }
 }

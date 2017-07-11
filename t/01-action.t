@@ -3,7 +3,9 @@
 use v6;
 use Test;
 use lib 'lib';
+use QAST:from<NQP>;
 use Smart::Comments::Grammar;
+use Smart::Comments::Actions;
 
 my $msg = "Hello there friend";
 my @list = (
@@ -18,8 +20,13 @@ plan +@list;
 grammar SMC does Smart::Comments::Grammar { }
 
 for @list -> $i {
-    my $m = SMC.subparse: $i, :rule('comment:sym<smc>');
-    ok $m !~~ Nil;
+    my $m = SMC.subparse(
+        $i,
+        :rule('comment:sym<smc>'),
+        :actions(Smart::Comments::Actions.new)
+    ).made;
+
+    ok $m.^name ~~ "QAST::Op";
 }
 
 done-testing;

@@ -6,24 +6,24 @@
   },
   "perl": "6.c",
   "resources": [
-    
+
   ],
   "build-depends": [
-    
+
   ],
   "auth": "github:nicqrocks",
   "depends": [
     "Test::META"
   ],
   "tags": [
-    
+
   ],
-  "license": "Artistic 2.0",
+  "license": "Artistic-2.0",
   "test-depends": [
-    
+
   ],
   "provides": {
-    
+
   },
   "production": false,
   "version": "0.0.1",

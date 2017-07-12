@@ -18,7 +18,7 @@ plan +@list;
 grammar SMC does Smart::Comments::Grammar { }
 
 for @list -> $i {
-    my $m = SMC.subparse: $i, :rule('comment:sym<smc>');
+    my $m = SMC.subparse: $i, :rule('statement_control:sym<smc>');
     ok $m !~~ Nil;
 }
 

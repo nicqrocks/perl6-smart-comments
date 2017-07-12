@@ -22,7 +22,7 @@ grammar SMC does Smart::Comments::Grammar { }
 for @list -> $i {
     my $m = SMC.subparse(
         $i,
-        :rule('comment:sym<smc>'),
+        :rule('statement_control:sym<smc>'),
         :actions(Smart::Comments::Actions.new)
     ).made;
 

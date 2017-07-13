@@ -7,7 +7,7 @@ use lib 'lib';
 
 use Smart::Comments;
 
-plan 4;
+plan 6;
 
 sub c1 {
     # Regular comment.
@@ -29,5 +29,15 @@ output-is { c2 }, "";
 #Make sure that comments with 3+ '#' are outputed.
 output-is { c3 }, "### Message...\n";
 output-is { c4 }, "#### Message...\n";
+
+#Make sure that it works ithout being in a sub.
+output-is {
+    ### No-sub
+}, "### No-sub\n";
+output-is {
+    #Normal comment.
+    ###Mixed comments.
+    #Normal comment.
+}, "###Mixed comments.\n";
 
 done-testing;

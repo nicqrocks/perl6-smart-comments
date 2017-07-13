@@ -2,19 +2,6 @@
 
 #Define the grammar to expand.
 role Smart::Comments::Grammar is export {
-    #Re-define token so that it does not grab the new thing.
-    # token comment:sym<#> {
-    #     [
-    #         <!after '#'+>
-    #         ['#'|'##']
-    #         <!before '#'+>
-    #         || '#' ** 6..*
-    #     ]
-    #     {}
-    #     \N*
-    #     {note "In new comment: {$/.Str}"}
-    # }
-
     #The basic structure of the grammar.
     token comment:sym<smc> {
         $<level>=('###'|'####'|'#####')

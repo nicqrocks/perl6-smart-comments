@@ -15,7 +15,7 @@ for 1..10 -> $i {
     @list.push: ("#" x $i ~ $msg);
 }
 
-plan +@list * 2;
+plan +@list;
 
 #Define a grammar using the role.
 grammar SMC does Smart::Comments::Grammar { }
@@ -34,19 +34,6 @@ for @list -> $s {
         if ($n ~~ 3..5) {
             ok $m.<level> ~~ '#' x $n;
             ok $m.<smc-msg> ~~ $msg;
-        } else {
-            ok $m ~~ Nil|Any;
-        }
-    }
-
-    #Subtest for the '#' regex.
-    subtest {
-        #Parse the line using the '#' regex.
-        my $m = SMC.parse: $s, :rule('comment:sym<#>');
-        #If the test has the correct amount of '#' chars, make sure it parses the
-        #statement correctly.
-        if ($n !~~ 3..5) {
-            ok $m ~~ ('#' x $n ~ $msg);
         } else {
             ok $m ~~ Nil|Any;
         }

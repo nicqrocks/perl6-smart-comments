@@ -29,7 +29,7 @@
       "Smart::Comments::Actions": "lib/Smart/Comments/Actions.pm6"
   },
   "production": false,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "authors": [
     "Nic Q <nicq20@gmail.com>"
   ],

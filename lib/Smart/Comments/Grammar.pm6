@@ -4,20 +4,26 @@
 role Smart::Comments::Grammar is export {
     #Re-define token so that it does not grab the new thing.
     token comment:sym<#> {
-        <!after '#'>
-        ['#'|'##']:
-        <-[# \n]>+
-        {note "In new comment: {$/.Str}"}
+        [
+            <!after '#'+>
+            ['#'|'##']
+            <!before '#'+>
+            || '#' ** 6..*
+        ]
+        \N*
+        # {note "In new comment: {$/.Str}"}
     }
 
     #The basic structure of the grammar.
     token statement_control:sym<smc> {
-        $<level>=("#"+)
+        <!after '#'+>
+        $<level>=("#" ** 3..5)
+        <!before '#'+>
         <smc-msg>
-        {note "In SMC: {$/.Str}"}
+        # {note "In SMC: {$/.Str}"}
     }
 
     #Differentiate the message types.
     proto token smc-msg {*}
-    token smc-msg:sym<basic> { \N* {note "In MSG: {$/.Str}"} }
+    token smc-msg:sym<basic> { \N* }
 }

@@ -12,5 +12,5 @@ role Smart::Comments::Grammar is export {
 
     #Differentiate the message types.
     proto token smc-msg {*}
-    token smc-msg:sym<basic> { \N* }
+    token smc-msg:sym<basic> { <-[# \n]>+ }
 }

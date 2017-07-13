@@ -28,14 +28,15 @@ for @list -> $s {
     #Subtest for the 'SMC' regex.
     subtest {
         #Parse the line using the 'SMC' regex.
-        my $m = SMC.parse: $s, :rule('comment:sym<smc>');
+        my $m = SMC.parse($s, :rule('comment:sym<smc>'));
+        dd $m;
         #If the test has the correct amount of '#' chars, make sure it parses the
         #statement correctly.
         if ($n ~~ 3..5) {
             ok $m.<level> ~~ '#' x $n;
             ok $m.<smc-msg> ~~ $msg;
         } else {
-            ok $m ~~ Nil|Any;
+            ok !$m.defined;
         }
     }
 }

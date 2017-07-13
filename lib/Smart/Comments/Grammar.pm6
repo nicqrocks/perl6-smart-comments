@@ -5,6 +5,7 @@ role Smart::Comments::Grammar is export {
     #The basic structure of the grammar.
     token comment:sym<smc> {
         $<level>=('###'|'####'|'#####')
+        <!before '#'+>
         {}
         <smc-msg>
         {note "In SMC: {$/.Str}"}
@@ -12,5 +13,5 @@ role Smart::Comments::Grammar is export {
 
     #Differentiate the message types.
     proto token smc-msg {*}
-    token smc-msg:sym<basic> { <-[# \n]>+ }
+    token smc-msg:sym<basic> { \N+ }
 }

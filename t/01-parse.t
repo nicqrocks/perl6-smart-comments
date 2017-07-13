@@ -29,7 +29,6 @@ for @list -> $s {
     subtest {
         #Parse the line using the 'SMC' regex.
         my $m = SMC.parse($s, :rule('comment:sym<smc>'));
-        dd $m;
         #If the test has the correct amount of '#' chars, make sure it parses the
         #statement correctly.
         if ($n ~~ 3..5) {

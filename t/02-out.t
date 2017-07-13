@@ -7,10 +7,9 @@ use lib 'lib';
 
 use Smart::Comments;
 
-#This is not a test.
-####This is a test.
-
 plan 6;
+
+####This is a test.
 
 sub c1 {
     # Regular comment.

@@ -9,7 +9,7 @@ role Smart::Comments::Actions is export {
         nqp::atkey(nqp::findmethod(h, 'hash')(h), k)
     }
 
-    method statement_control:sym<smc>(Mu $/) {
+    method comment:sym<smc>(Mu $/) {
         #Get the message.
         my $lvl := lk($/, 'level');
         my $msg := lk($/, 'smc-msg');
@@ -20,12 +20,10 @@ role Smart::Comments::Actions is export {
             QAST::SVal.new(:value($lvl.Str ~ $msg.Str));
 
         #Add the block to the `made` var.
-        # try {
-        #     my $BLOCK := $*CURPAD;
-        #     $BLOCK.push: $b;
-        #     $BLOCK.node: $/;
-        #     CATCH { default { .Str.say; } }
-        # }
+        try {
+            $*W.cur_lexpad.push: $b;
+            CATCH { default { .Str.note; } }
+        }
         $/.'make'($b);
     }
 

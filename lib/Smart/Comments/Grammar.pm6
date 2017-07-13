@@ -3,24 +3,24 @@
 #Define the grammar to expand.
 role Smart::Comments::Grammar is export {
     #Re-define token so that it does not grab the new thing.
-    token comment:sym<#> {
-        [
-            <!after '#'+>
-            ['#'|'##']
-            <!before '#'+>
-            || '#' ** 6..*
-        ]
-        \N*
-        # {note "In new comment: {$/.Str}"}
-    }
+    # token comment:sym<#> {
+    #     [
+    #         <!after '#'+>
+    #         ['#'|'##']
+    #         <!before '#'+>
+    #         || '#' ** 6..*
+    #     ]
+    #     {}
+    #     \N*
+    #     {note "In new comment: {$/.Str}"}
+    # }
 
     #The basic structure of the grammar.
-    token statement_control:sym<smc> {
-        <!after '#'+>
-        $<level>=("#" ** 3..5)
-        <!before '#'+>
+    token comment:sym<smc> {
+        $<level>=('###'|'####'|'#####')
+        {}
         <smc-msg>
-        # {note "In SMC: {$/.Str}"}
+        {note "In SMC: {$/.Str}"}
     }
 
     #Differentiate the message types.

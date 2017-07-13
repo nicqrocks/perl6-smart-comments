@@ -25,10 +25,10 @@ for @list -> $s {
     #Figure out how many '#' chars there are in this test.
     my $n = ($s ~~ / '#'* /).Str.chars;
 
-    #Subtest for the 'statement_control' regex.
+    #Subtest for the 'SMC' regex.
     subtest {
-        #Parse the line using the 'statement_control' regex.
-        my $m = SMC.parse: $s, :rule('statement_control:sym<smc>');
+        #Parse the line using the 'SMC' regex.
+        my $m = SMC.parse: $s, :rule('comment:sym<smc>');
         #If the test has the correct amount of '#' chars, make sure it parses the
         #statement correctly.
         if ($n ~~ 3..5) {
@@ -39,9 +39,9 @@ for @list -> $s {
         }
     }
 
-    #Subtest for the 'comment' regex.
+    #Subtest for the '#' regex.
     subtest {
-        #Parse the line using the 'comment' regex.
+        #Parse the line using the '#' regex.
         my $m = SMC.parse: $s, :rule('comment:sym<#>');
         #If the test has the correct amount of '#' chars, make sure it parses the
         #statement correctly.

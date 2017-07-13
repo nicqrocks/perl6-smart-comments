@@ -1,6 +1,5 @@
 #!/usr/bin/env perl6
 
-
 sub EXPORT(|) {
     #Get the grammar and actions.
     use Smart::Comments::Grammar;
